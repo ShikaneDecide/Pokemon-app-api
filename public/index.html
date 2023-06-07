@@ -25,6 +25,48 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <Header>
+      <div class="container">
+        <!-- Heading for the Page -->
+        <h1 style="text-align: center">
+          Search Pokemon
+        </h1>
+        <!--Search box to find the Pokemon-->
+        <div class="box" style="text-align: center">
+          <input
+            id="searchbar"
+            class="poke-search"
+            onkeyup="search_pokemon()"
+            type="text"
+            name="search"
+            placeholder="Search Pokemon.."
+            style="width: 62%; position: relative; margin-right: 10%"
+          />
+        </div>
+        <!--Displaying Pokemon Card's-->
+        <ul id="pokedex" style="display: flex; flex-wrap: wrap"></ul>
+      </div>
+      <!--  functon to search pokemon (by Pokemon Type and Pokemon Name)-->
+      <script>
+        function search_pokemon() {
+          let input = document.getElementById('searchbar').value;
+          input = input.toLowerCase();
+          // storing all card along wiith details in variable
+          let x = document.getElementsByClassName('card');
+  
+          for (i = 0; i < x.length; i++) {
+            // checking  the name or type entered by user from search box if doesn't match than dont display the message
+            if (!x[i].innerHTML.toLowerCase().includes(input)) {
+              x[i].style.display = 'none';
+            }
+            // checking  the name or type entered by user from search box if doesn't match than dont display the pokemon card
+            else {
+              x[i].style.display = 'list-item';
+            }
+          }
+        }
+      </script>
+    </Header>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
